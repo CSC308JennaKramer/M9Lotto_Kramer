@@ -164,8 +164,70 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
         
+        let labels = [numLabel1!, numLabel2!, numLabel3!, numLabel4!, numLabel5!, numLabel6!, numLabel7!]
+        
+        var nums = [Int]()
+        while nums.count < labels.count{
+            let rndNum = Int.random(in:1...45)
+            if !nums.contains(rndNum){
+                nums.append(rndNum)
+            }
+        }
+        let sortedNums = nums.sorted()
+        //        nums.sorted(by: >) //descending order
+        for label in labels{
+            label.layer.cornerRadius = label.bounds.width / 2
+            label.clipsToBounds = true
+        }
+        
+        for (index,label) in labels.enumerated(){
+            label.layer.cornerRadius = label.bounds.width / 2
+            label.clipsToBounds = true
+            
+            label.text = "\(sortedNums[index])"
+            
+            switch sortedNums[index]{
+            case 1...10:
+                label.backgroundColor = .red
+                label.textColor = .white
+            case 11...20:
+                label.backgroundColor = .green
+                label.textColor = .black
+            case 21...30:
+                label.backgroundColor = .blue
+                label.textColor = .white
+            case 31...40:
+                label.backgroundColor = .yellow
+                label.textColor = .black
+            case 41...45:
+                label.backgroundColor = .orange
+                label.textColor = .black
+            default:
+                break
+            }
+            
+            let rand4 = Int.random(in: 1...45)
+            numLabel4.text = "\(rand4)"
+            switch rand4{
+            case 1...10:
+                numLabel4.backgroundColor = .red
+                numLabel4.textColor = .white
+            case 11...20:
+                numLabel4.backgroundColor = .green
+                numLabel4.textColor = .black
+            case 21...30:
+                numLabel4.backgroundColor = .blue
+                numLabel1.textColor = .white
+            case 31...40:
+                numLabel4.backgroundColor = .yellow
+                numLabel4.textColor = .black
+            case 41...45:
+                numLabel4.backgroundColor = .orange
+                numLabel4.textColor = .black
+            default:
+                break            }
+        }
         numLabel1.layer.cornerRadius = numLabel1.bounds.width / 2
         numLabel1.clipsToBounds = true
         
@@ -177,17 +239,18 @@ class ViewController: UIViewController {
         
         numLabel4.layer.cornerRadius = numLabel1.bounds.width / 2
         numLabel4.clipsToBounds = true
-
+        
         numLabel5.layer.cornerRadius = numLabel1.bounds.width / 2
         numLabel5.clipsToBounds = true
-
+        
         numLabel6.layer.cornerRadius = numLabel1.bounds.width / 2
         numLabel6.clipsToBounds = true
-
+        
         numLabel7.layer.cornerRadius = numLabel1.bounds.width / 2
         numLabel7.clipsToBounds = true
-    
+        
         numLabel8.layer.cornerRadius = numLabel1.bounds.width / 2
         numLabel8.clipsToBounds = true
     }
-
+    
+}
